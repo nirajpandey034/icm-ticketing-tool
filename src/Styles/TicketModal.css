@@ -1,0 +1,37 @@
+.elements {
+    margin: 10px;
+    
+}
+#name,
+#title, 
+#description {
+    font-size: 16px;
+    font-size: max(16px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    width: 90%;
+}
+
+#severity,
+#priority,
+#assignTo
+{
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+}
+
+#cancelButton,
+#submitButton
+{
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    border: 2px solid blue;
+}
+
