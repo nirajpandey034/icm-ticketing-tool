@@ -33,6 +33,7 @@ export default function Dashboard() {
       })
     return (
             <div>
+                <h2>Press F9 or the + button.</h2>
                 <TicketModal openModal={openModal} closeModal={()=>{setOpenModal(!openModal)}}/>
                 <div className={classes.root}>
                     <Fab size="medium" color="primary" aria-label="create ticket">
