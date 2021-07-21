@@ -57,6 +57,11 @@ function TicketResolutionModal(props) {
         }
 
     }
+    window.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            props.closeModal()
+        }
+      })
     return ReactDom.createPortal(
 
         <>
@@ -65,7 +70,7 @@ function TicketResolutionModal(props) {
                 <form className={classes.root} noValidate autoComplete="off">
                     <TextField id="resolution" label="Resolution" variant="outlined" />
                 </form>
-                <button onClick={handleMitigate}>Mitigate</button>
+                <button onClick={handleMitigate}>Mitigate</button> <br />
                 <button onClick={() => { props.closeModal() }}>Close</button>
             </div>
         </>,

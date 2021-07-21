@@ -9,6 +9,7 @@ import TicketCards from './TicketCards';
 
 import axios from 'axios'
 import Tooltip from '@material-ui/core/Tooltip';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 
@@ -54,7 +55,7 @@ export default function Dashboard() {
   return (
     <div>
       <h2 style={{textDecoration:'underline'}}>IcM - Ticketing Tool</h2>
-      {cards}
+      {(cards.length === 0) ? <LinearProgress /> : cards}
       <TicketModal openModal={openModal} closeModal={() => { setOpenModal(!openModal) }} />
       <div className={classes.root}>
         <Tooltip title="Log Ticket">
