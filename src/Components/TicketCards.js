@@ -34,7 +34,10 @@ function TicketCards(props) {
     const [openModal, setOpenModal] = useState(false);
     //const bull = <span className={classes.bullet}>•</span>;
     const handleMitigate = () => {
-        setOpenModal(true);
+        if(props.state === 'Active')
+            setOpenModal(true);
+        else
+            alert('Ticket should be in Active state, to mitigate')
     }
     const handleResolve = () => {
         if (props.state === 'Mitigated') {
