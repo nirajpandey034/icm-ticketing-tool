@@ -8,6 +8,7 @@ import TicketModal from './TicketModal'
 import TicketCards from './TicketCards';
 
 import axios from 'axios'
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 
@@ -26,19 +27,19 @@ export default function Dashboard() {
   const [cards, setCards] = useState([]);
   const classes = useStyles();
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('https://icm-ticketing-tool.herokuapp.com/getAllTickets')
-    .then((response)=>{
-      let res=[];
-      response.data.forEach((card)=>{
-        res = [...res, <TicketCards key={card._id} id={card._id} title={card.title} description={card.description}
-        severity={card.severity} priority={card.priority} raised_timestamp={card.raised_timestamp} 
-        raised_by={card.raised_by} assigned_to={card.assigned_to} state={card.state} resolution={card.resolution}/>]
+      .then((response) => {
+        let res = [];
+        response.data.forEach((card) => {
+          res = [...res, <TicketCards key={card._id} id={card._id} title={card.title} description={card.description}
+            severity={card.severity} priority={card.priority} raised_timestamp={card.raised_timestamp}
+            raised_by={card.raised_by} assigned_to={card.assigned_to} state={card.state} resolution={card.resolution} />]
+        })
+        setCards(res);
       })
-      setCards(res);
-    })
-    .catch((err)=>{console.log(err)});
-  },[])
+      .catch((err) => { console.log(err) });
+  }, [])
 
   const openModalHandler = () => {
     setOpenModal(!openModal);
@@ -52,13 +53,15 @@ export default function Dashboard() {
   })
   return (
     <div>
-      <h2>Press F9 or the + button.</h2>
+      <h2 style={{textDecoration:'underline'}}>IcM - Ticketing Tool</h2>
       {cards}
       <TicketModal openModal={openModal} closeModal={() => { setOpenModal(!openModal) }} />
       <div className={classes.root}>
-        <Fab size="medium" color="primary" aria-label="create ticket">
-          <AddIcon onClick={openModalHandler} />
-        </Fab>
+        <Tooltip title="Log Ticket">
+          <Fab size="medium" color="primary" aria-label="create ticket">
+            <AddIcon onClick={openModalHandler} />
+          </Fab>
+        </Tooltip>
       </div>
     </div>
   )

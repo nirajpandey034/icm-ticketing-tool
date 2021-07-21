@@ -14,6 +14,8 @@ import TicketResolutionModal from './TicketResolutionModal';
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
+        margin:'20px',
+        boxShadow:'2px 1px 1px'
     },
     bullet: {
         display: 'inline-block',
@@ -34,7 +36,7 @@ function TicketCards(props) {
     const [openModal, setOpenModal] = useState(false);
     //const bull = <span className={classes.bullet}>•</span>;
     const handleMitigate = () => {
-        if(props.state === 'Active')
+        if (props.state === 'Active')
             setOpenModal(true);
         else
             alert('Ticket should be in Active state, to mitigate')
@@ -99,13 +101,13 @@ function TicketCards(props) {
                         </Typography>
                     </div>
                     {(props.state === 'Mitigated' || props.state === 'Resolved') ?
-                    (
-                        <div style={{ display: "flex", width: '100%' }}>
-                            <Typography style={{ fontSize: '14' }} color="textSecondary" gutterBottom>
-                                <strong>Resolution:</strong> {props.resolution}
-                            </Typography>
-                        </div>
-                    )
+                        (
+                            <div style={{ display: "flex", width: '100%' }}>
+                                <Typography style={{ fontSize: '14' }} color="textSecondary" gutterBottom>
+                                    <strong>Resolution:</strong> {props.resolution}
+                                </Typography>
+                            </div>
+                        )
                         : null
                     }
                     {/* <div style={{ display: "flex", width: '100%' }}>
